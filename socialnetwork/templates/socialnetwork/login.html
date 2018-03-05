@@ -1,0 +1,68 @@
+{% extends "socialnetwork/base.html" %}
+
+
+{% block nav_bar %}
+ <div class="collapse navbar-collapse" id="navbarResponsive">
+  <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+      <a class="nav-link" href="{% url 'visitor'%}">Vistor</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="{% url 'register'%}">Register</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="{% url 'login'%}">Login</a>
+    </li>
+
+  </ul>
+</div>
+{% endblock %}
+
+
+{% block main_content %}
+
+<div class="container">
+
+<br>
+  <div class="row">
+    <div class="col-lg-3 col-md-100 mx-auto">
+      <br>
+      <br>
+
+      <form class="form-signin" method = "post" action = "{%url 'login'%}">
+        
+
+        <h2 class="form-signin-heading">Welcome back!</h2>
+        {% csrf_token %}
+
+
+       	{% if form.errors %}
+        	<p>Your username and password didn't match. Please try again.</p>
+    	{% endif %}
+
+        <label for="username" class="sr-only" >user</label>
+        <input type="text" id="Username" class="form-control" placeholder="Username" name = "username" required>
+        {{form.username.errors}}
+        <label for="inputPassword" class="sr-only">Password</label>
+        <input type="password" id="inputPassword" class="form-control" placeholder="Password" name = "password" required>
+        {{form.password.errors}}
+        <div class="checkbox">
+          <label>
+            <input type="checkbox" value="remember-me"> Remember me
+          </label>
+        </div>
+        <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+        
+        
+
+        <br> 
+      </form>
+    </div>
+  </div>
+</div>
+
+
+{% endblock%}
+
+
+

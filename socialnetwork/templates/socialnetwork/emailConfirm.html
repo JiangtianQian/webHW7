@@ -1,0 +1,28 @@
+{% extends "socialnetwork/base.html" %}
+
+{% load static %}
+
+{% block nav_bar %}
+ <div class="collapse navbar-collapse" id="navbarResponsive">
+  <ul class="navbar-nav ml-auto">
+    <li class="nav-item">
+      <a class="nav-link" href="{%url 'register'%}">Register</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="{%url 'login'%}">Login</a>
+    </li>
+  </ul>
+</div>
+{% endblock %}
+
+{% block main_content%}
+<br>
+<br>
+<br>
+<p>
+A confirmation email has been sent to {{emailconfirm}}.  Please click the link
+in that email to confirm your email address and complete your registration for
+your blog.
+</p>
+{% endblock %}
+

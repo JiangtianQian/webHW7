@@ -1,0 +1,76 @@
+{% extends "socialnetwork/follow_base.html" %}
+
+
+
+  {% load static %}
+
+
+{% block nav_bar %}
+
+
+ <div class="collapse navbar-collapse" id="navbarResponsive">
+  <ul class="navbar-nav ml-auto">
+    <li class="nav-item">
+      <a class="nav-link" href="{%url 'home'%}">Home</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="{% url 'logout'%}">Logout</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="{% url 'myProfile'%}">myProfile</a>
+    </li>
+
+  
+  </ul>
+</div>
+{% endblock %}
+
+
+{% block main_content %}
+    <!-- Page Content -->
+    <div class="container">
+
+      <div class="row">
+
+        <!-- Post Content Column -->
+        <div class="col-lg-8">
+
+          <!-- Title -->
+          <h1 class="mt-4">Followering's posts</h1>
+
+
+              <p><ol id="follow-list"></ol></p>
+
+
+         {% csrf_token %}
+
+         
+        </div>
+
+        <!-- Sidebar Widgets Column -->
+        <div class="col-md-4">
+          <!-- Side Widget -->
+              <div class="card2">
+                <br>
+              <div style="margin: 24px 0;"> 
+                <h3> Followering </h3>
+              {% for follow in follower%}
+              <li><a href="{% url 'otherProfile' follow.user %}">{{follow.user}}</a></li>
+              <p id="followHidden" hidden>{{follow.user}} </p>
+              {% endfor %}
+             </div>
+
+            
+           </div>
+
+    
+
+<!--row-->
+  </div>
+
+</div>
+
+   {% endblock%}
+
+
+

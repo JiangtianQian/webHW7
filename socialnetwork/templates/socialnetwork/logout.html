@@ -1,0 +1,98 @@
+{% extends "socialnetwork/base.html" %}
+
+{% load static %}
+
+
+  
+
+{% block nav_bar %}
+ <div class="collapse navbar-collapse" id="navbarResponsive">
+  <ul class="navbar-nav ml-auto">
+    <li class="nav-item">
+      <a class="nav-link" href="{%url 'register'%}">Register</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="{%url 'login_to'%}">Log in</a>
+    </li>
+
+
+  </ul>
+</div>
+{% endblock %}
+
+
+{% block main_content %}
+    <!-- Page Content -->
+    <div class="container">
+
+
+      <div class="row">
+
+
+        <!-- Post Content Column -->
+        <div class="col-lg-8">  
+
+          <!-- Page Content -->
+    <div class="container">
+
+      <div class="row">
+
+
+
+        <!-- Post Content Column -->
+        <div class = "blog-post">
+          <br>
+          <h2> The visitor view</h2>
+          {% for item in items %}
+        <div class="col-lg-20">
+          <hr>
+
+          <!-- Title -->
+          <h1 class="mt-2">{{ item.title }}</h1>
+
+          <!-- Author -->
+           <div class="media mb-4">
+
+          <p class="lead">
+            Write by {{ item.user }}</a>
+          </p>
+        </div>
+
+          <!-- Date/Time -->
+          <p>Posted on {{ item.postTime }}</p>
+
+
+          <!-- Post Content -->
+          <p class="lead">{{ item.text }}</p>
+
+          <!-- Single Comment -->
+          <div class="media mb-4">
+            <img class="d-flex mr-3 rounded-circle" src="http://placehold.it/50x50" alt="">
+            <div class="media-body">
+              <h5 class="mt-0">Alice</a></h5>
+              <p>Comment on Feb. 10, 2018, 11:17</p>
+              Vey good! Fantastic!Vey good! Fantastic!Vey good! Fantastic! Vey good! Fantastic! Vey good! Fantastic!
+            </div>
+          </div>
+
+
+
+          <!--Post class ...-->
+        </div>
+
+        {% endfor %}
+        <!--Post class post-->
+      </div>
+      </div>
+      <!-- /.row -->
+
+    </div>
+
+
+        </div>
+
+      </div>
+      <!-- /.row -->
+
+    </div>
+   {% endblock%}

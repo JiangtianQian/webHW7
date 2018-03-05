@@ -1,0 +1,9 @@
+{% load static %}
+
+<h6>{{text}}</h6>
+<p class="blog-post-meta"> --- Write By <a href="{%url 'otherProfile' username%}">{{user}}</a> on {{postTime}}
+</p>
+
+<p><ol id="comment-list_{{id}}"></ol></p>
+<input id="item-field_commentPost_{{id}}" type="text" class="comment" style="width:700px" >
+<button id="commentPost_{{id}}" type="submit" class="btn btn-primary">Submit</button>

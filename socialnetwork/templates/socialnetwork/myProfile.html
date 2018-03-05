@@ -1,0 +1,106 @@
+{% extends "socialnetwork/base.html" %}
+
+  {% load static %}
+
+
+{% block nav_bar %}
+ <div class="collapse navbar-collapse" id="navbarResponsive">
+  <ul class="navbar-nav ml-auto">
+    <li class="nav-item">
+      <a class="nav-link" href="{%url 'home'%}">Home</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="{% url 'logout'%}">Logout</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="{% url 'myProfile'%}">myProfile</a>
+    </li>
+  </ul>
+</div>
+{% endblock %}
+
+
+{% block main_content %}
+    <!-- Page Content -->
+    <div class="container">
+
+      <div class="row">
+
+        <!-- Post Content Column -->
+        <div class="col-lg-8">
+
+          <!-- Title -->
+          <h1 class="mt-4">Recent Post</h1>
+
+        {% for item in items %}
+        <div class="col-lg-20">
+          <hr>
+          <!-- Author -->
+           <div class="media mb-4">
+
+          {% if bio.picture %}
+            
+          <img class="d-flex mr-3"  style="width:10%" src="{% url 'photo' item.user.id %}" alt="">
+          {% else %}
+          <img class="d-flex mr-3"  style="width:10%" src="{% static 'socialnetwork/img/bg.jpg' %}" alt="">
+          {% endif %}
+
+          <p class="lead">
+            Write by
+             <a href="{% url 'myProfile' %}">{{ item.user }}</a>
+          </p>
+        </div>
+
+          <!-- Date/Time -->
+          <p>Posted on {{ item.postTime }}</p>
+
+
+          <!-- Post Content -->
+          <p class="lead">{{ item.text }}</p>
+
+          <!--Post class ...-->
+        </div>
+
+        {% endfor %}
+
+    
+        </div>
+
+        <!-- Sidebar Widgets Column -->
+        <div class="col-md-4">
+          <!-- Side Widget -->
+              <div class="card2">
+                <br>
+               {% if bio.picture %}
+                 <img src="{% url 'photo' userid %}" style="width:100%">
+                 {% else %}
+                 <img src="{% static 'socialnetwork/img/bg.jpg' %}" style="width:100%">
+                 {% endif %}
+
+              <p>Username: {{ username }}</p>
+              <p>Firstname: {{ firstname }} </p>
+               <p>Lastname: {{ lastname }} </p>
+              <p>Email address: {{ email }} </p>
+              <div style="margin: 24px 0;">   
+             </div>
+             <form method = 'post' action = "{% url 'followStream' %}">
+              {% csrf_token %}
+             <h5><button>Following List</button></h5>
+           </form>
+
+           <br>
+           <form method = 'post' action = "{% url 'updateProfile' %}">
+              {% csrf_token %}
+             <h5><button>Update profile</button></h5>
+           </form>
+            
+           </div>
+
+    
+
+<!--row-->
+  </div>
+
+</div>
+
+   {% endblock%}

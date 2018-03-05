@@ -1,0 +1,96 @@
+{% extends "socialnetwork/base.html" %}
+
+  {% load static %}
+
+
+{% block nav_bar %}
+ <div class="collapse navbar-collapse" id="navbarResponsive">
+  <ul class="navbar-nav ml-auto">
+    <li class="nav-item">
+      <a class="nav-link" href="{%url 'home'%}">Home</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="{% url 'logout'%}">Logout</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="{% url 'myProfile'%}">myProfile</a>
+    </li>
+
+  
+  </ul>
+</div>
+{% endblock %}
+
+
+{% block main_content %}
+    <!-- Page Content -->
+    <div class="container">
+
+      <div class="row">
+
+        <!-- Post Content Column -->
+        <div class="col-lg-8">
+
+          <!-- Title -->
+          <h1 class="mt-4">Recent Post</h1>
+
+          <hr>       
+          <!-- Post Content -->
+         <div class="card mb-4">
+            <div class="card-body">
+              <h2 class="card-title">Go to school!</h2>
+              <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eos, doloribus, dolorem iusto blanditiis unde eius illum consequuntur neque dicta incidunt ullam ea hic porro optio ratione repellat perspiciatis. Enim, iure!</p>
+              <a href="#" class="btn btn-primary">Read More &rarr;</a>
+            </div>
+            <div class="card-footer text-muted">
+              Feb.10 2017 10:11
+              <a href="{% url 'alice' %}">by Alice</a>
+            </div>
+          </div>
+
+          <!-- Comments Form -->
+          <div class="card my-4">
+            <h5 class="card-header">Leave a Comment:</h5>
+            <div class="card-body">
+              <form>
+                <div class="form-group">
+                  <textarea class="form-control" rows="3"></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+              </form>
+            </div>
+          </div>
+
+          <!-- Single Comment -->
+          <div class="media mb-4">
+            <img class="d-flex mr-3 rounded-circle" src="http://placehold.it/50x50" alt="">
+            <div class="media-body">
+              <h5 class="mt-0">Commenter Name</h5>
+               <p>Comment on Feb. 10, 2018, 11:17</p>
+              Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
+            </div>
+          </div>
+        </div>
+
+        <!-- Sidebar Widgets Column -->
+        <div class="col-md-4">
+          <!-- Side Widget -->
+              <div class="card2">
+                <br>
+                <img src="{% static 'socialnetwork/img/alice.jpg' %}" alt="Alice" style="width:100%">
+              <p>Username: Alice </p>
+              <p>First name: white </p>
+              <p>Last name: Alice </p>
+              <p>Email: alice@gmail.com </p>
+                <div style="margin: 24px 0;">
+              </div>
+              <p><button>follow</button></p>
+              <p><button>unFollow</button></p>
+              </div>
+          </div>
+
+      </div>
+      <!-- /.row -->
+
+    </div>
+   {% endblock%}
